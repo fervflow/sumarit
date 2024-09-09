@@ -16,7 +16,7 @@ const NavBar = () => {
             SumArit
           </a>
         </div>
-        <div className="navbar-center flex">
+        <div className="navbar-center flex text-base-content">
           <ul className="menu menu-horizontal px-1  font-semibold">
             <li>
               <Link href="/" className='flex justify-center items-center gap-1'>

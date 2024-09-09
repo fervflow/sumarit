@@ -13,7 +13,7 @@ const PlayTimer = () => {
   const [operation, setOperation] = useState(generateOperation());
   const [answer, setAnswer] = useState<string>('');
 
-  // const api = useApiContext();
+  const api = useApiContext();
   
   useEffect(() => {
     // if(isLoading) return;
@@ -60,7 +60,7 @@ const PlayTimer = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='flex flex-col items-center gap-4 font-bold text-3xl' >
+      className='flex flex-col items-center gap-4 font-bold text-3xl text-base-content' >
       <h3 className='text-lg'>Tiempo restante:</h3>
       <span
         className={timer > 3 ? 'text-secondary': 'text-warning'} >

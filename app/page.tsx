@@ -1,11 +1,10 @@
-// import ListScores from "./components/ListScores";
-
+import ListScores from "./components/ListScores";
 
 export default function Home() {
   return (
-    <main className="grow flex flex-col items-center py-6 gap-4 overflow-hidden">
+    <main className="grow flex flex-col items-center py-6 gap-4 overflow-hidden text-base-content">
       <h3 className='text-xl font-semibold'>Tabla de Resultados</h3>
-      {/* <ListScores></ListScores> */}
+      <ListScores></ListScores>
     </main>
   );
 }

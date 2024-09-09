@@ -26,7 +26,7 @@ const Score:React.FC<iScore> = ({score}) => {
         `}
       >{score.feedback ? "✔" : '✘'}</td>
     </tr>
-  )
+  );
 }
 
-export default Score
+export default Score;

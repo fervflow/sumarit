@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import ApiContextProvider from "./contexts/ApiContext";
 import NavBar from "./components/NavBar";
-import TestComponent from "./components/TestComponent";
+import { ApiContextProvider } from "./contexts/ApiContext";
+// import TestComponent from "./components/TestComponent";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,9 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base-100 min-h-dvh max-h-dvh flex flex-col`}
       >
+        <NavBar></NavBar>
         <ApiContextProvider>
-          <NavBar></NavBar>
-          <TestComponent></TestComponent>
+          {/* <TestComponent></TestComponent> */}
           {children}
         </ApiContextProvider>
       </body>
