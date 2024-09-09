@@ -4,7 +4,7 @@ import PlayTimer from '../components/PlayTimer'
 const page = () => {
   return (
     <div className='flex justify-center mt-10'>
-      <PlayTimer></PlayTimer>
+      <PlayTimer></PlayTimer> 
     </div>
   )
 }

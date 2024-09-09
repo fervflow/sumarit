@@ -1,3 +1,5 @@
+"use client";
+
 import { useApiContext } from '@/app/contexts/ApiContext';
 
 export default function TestComponent() {

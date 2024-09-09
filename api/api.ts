@@ -1,4 +1,4 @@
-import IdGenerator from "@/app/lib/IdGenerator";
+import IdGenerator from "@/utils/IdGenerator";
 import { IScore, CreateScore } from "@/types/IScore";
 
 const url_db = 'http://localhost:3030'

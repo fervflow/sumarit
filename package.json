@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "backend": "json-server --watch data/db_scores.json --port 3030"
   },
   "dependencies": {
+    "json-server": "^1.0.0-beta.2",
     "next": "14.2.8",
     "react": "^18",
     "react-dom": "^18",

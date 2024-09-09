@@ -1,4 +1,4 @@
-import IdGenerator from "@/app/lib/IdGenerator";
+import IdGenerator from "@/utils/IdGenerator";
 import { IScore, CreateScore } from "@/types/IScore";
 
 const scoresKey = 'saved_scores';
