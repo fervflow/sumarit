@@ -6,50 +6,52 @@ import Score from './Score';
 import { useApiContext } from '../contexts/ApiContext';
 
 const ListScores:React.FC = () => {
-  // const [api, isLoading] = useAPI();
   const [scores, setScores] = useState<IScore[]>([]);
-  // const [shouldFetch, setShouldFetch] = useState(true);
 
   const api = useApiContext();
 
-  const fetchScores = useCallback(async () => {
-    if (!api) return;
-    const fetchedScores = await api.getAllScores();
-    setScores(fetchedScores);
-    // setShouldFetch(false);
-  }, [api]);
-
-  useEffect(() => {
-    // if (!isLoading && shouldFetch) {
-      fetchScores();
-    // }
-  // }, [isLoading, shouldFetch, fetchScores]);
-  }, [fetchScores]);
-
-  const totalAnswers = useMemo(() => scores.length, [scores]);
-  const correctAnswers = useMemo(() => {
-    return scores.reduce(
-      (sum, score) => sum + (score["feedback"] ? 1 : 0), 0);
-  }, [scores]);
-
   const [showAlert, setShowAlert] = useState(false);
+  const [alertDeleteOrReload, setAlertDeleteOrReload] = useState(true); //1: delete, 0: reload
 
-  const deleteSores = useCallback(async () => {
-    if (!api) return;
-    await api.deleteAllScores();
+  const ShowAlert = useCallback(() => {
     setShowAlert(true);
     setTimeout(() => {
       setShowAlert(false);
     }, 3000);
+  }, []);
+
+  const fetchScores = useCallback(async () => {
+    if (!api) {console.log('ListScores: No API yet'); return;}
+    const fetchedScores = await api.getAllScores();
+    setScores(fetchedScores);
+  }, [api]);
+
+  useEffect(() => {
+      fetchScores();
+  }, [fetchScores]);
+
+  const totalAnswers = useMemo(() => scores.length, [scores]);
+  const correctAnswers = useMemo(() => {
+    console.log('SCORES:', scores);
+    
+    return scores.reduce(
+      (sum, score) => sum + (score["feedback"] ? 1 : 0), 0);
+  }, [scores]);
+
+  const reloadSores = useCallback(async () => {
+    if (!api) return;
     fetchScores();
-  }, [api, fetchScores]);
-  
-  // if (isLoading) return (
-  //   <div className='flex items-center font-bold'>
-  //     Cargando resultados &nbsp;
-  //     <span className="loading loading-dots loading-md text-secondary"></span>
-  //   </div>
-  // );
+    setAlertDeleteOrReload(false);
+    ShowAlert();
+  }, [api, fetchScores, ShowAlert]);
+
+  const deleteSores = useCallback(async () => {
+    if (!api) return;
+    await api.deleteAllScores();
+    setAlertDeleteOrReload(true);
+    ShowAlert();
+    fetchScores();
+  }, [api, fetchScores, ShowAlert]);
 
   return (
     <>
@@ -122,7 +124,7 @@ const ListScores:React.FC = () => {
 
           <button
             className='btn btn-sm btn-link decoration-wavy no-underline'
-            onClick={fetchScores}
+            onClick={reloadSores}
           >
             Recargar Resultados
           </button>
@@ -135,7 +137,7 @@ const ListScores:React.FC = () => {
     )}
     {
       showAlert &&
-      <div role="alert" className="alert alert-warning flex items-center w-fit transition ease-in-out">
+      <div role="alert" className={`alert ${alertDeleteOrReload ? 'alert-warning':'alert-success'} flex items-center w-fit transition duration-1000 ease-in-out`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -145,9 +147,13 @@ const ListScores:React.FC = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            d={`${alertDeleteOrReload
+                ? "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                : "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"}
+              `}
+          ></path>
         </svg>
-        <span>Los resultados fueron eliminados.</span>
+        <span>Los resultados fueron {alertDeleteOrReload ? 'eliminados' : 'recargados'}.</span>
       </div>
     }
     </>

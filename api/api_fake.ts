@@ -32,4 +32,5 @@ export const addScore = async (createScore: CreateScore): Promise<IScore> => {
 
 export const deleteAllScores = async (): Promise<void> => {
   scores = [];
+  idGenerator.resetId();
 }
