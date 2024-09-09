@@ -1,0 +1,25 @@
+{
+    "resultados": [
+      {
+        "id": 38,
+        "operation": "127 - 191",
+        "result": -64,
+        "answer": -62,
+        "feedback": false
+      },
+      {
+        "id": 39,
+        "operation": "43 - 4",
+        "result": 39,
+        "answer": 39,
+        "feedback": true
+      },
+      {
+        "id": 40,
+        "operation": "22 + 84",
+        "result": 106,
+        "answer": 106,
+        "feedback": true
+      }
+    ]
+  }
