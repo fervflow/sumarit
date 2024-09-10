@@ -31,9 +31,7 @@ const ListScores:React.FC = () => {
   }, [fetchScores]);
 
   const totalAnswers = useMemo(() => scores.length, [scores]);
-  const correctAnswers = useMemo(() => {
-    console.log('SCORES:', scores);
-    
+  const correctAnswers = useMemo(() => {    
     return scores.reduce(
       (sum, score) => sum + (score["feedback"] ? 1 : 0), 0);
   }, [scores]);

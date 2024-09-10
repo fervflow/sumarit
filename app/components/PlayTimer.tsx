@@ -8,7 +8,6 @@ import { useApiContext } from '../contexts/ApiContext';
 const DEFAULT_TIME = 15;
 
 const PlayTimer = () => {
-  // const [api, isLoading] = useAPI();
   const [timer, setTimer] = useState(DEFAULT_TIME);
   const [operation, setOperation] = useState(generateOperation());
   const [answer, setAnswer] = useState<string>('');
@@ -16,14 +15,11 @@ const PlayTimer = () => {
   const api = useApiContext();
   
   useEffect(() => {
-    // if(isLoading) return;
-
     const countdown = setInterval(() => {
       setTimer(prev => prev - 1);
     }, 1000);
 
     return () => clearInterval(countdown);
-  // }, [isLoading]);
   }, []);
 
   const handleAnswerInput = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
