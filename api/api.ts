@@ -6,7 +6,7 @@ const idGenerator = IdGenerator.Instance;
 
 export const getAllScores = async(): Promise<IScore[]> => {
     try {
-        const res = await fetch(`${url_db}/resultados`);
+        const res = await fetch(`${url_db}/scores`);
         if (!res.ok) {
             throw new Error(`HTTP error. Status: ${res.status}`)
         }
@@ -23,7 +23,7 @@ export const addScore = async (createScore: CreateScore): Promise<IScore> => {
         id: idGenerator.getId(),
         ...createScore
     };
-    const res = await fetch(`${url_db}/resultados`, {
+    const res = await fetch(`${url_db}/scores`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -35,8 +35,8 @@ export const addScore = async (createScore: CreateScore): Promise<IScore> => {
     return newScore;
 }
 
-const deleteScore = async (id: number): Promise<void> => {
-    const res = await fetch(`${url_db}/resultados/${id}`, {
+const deleteScore = async (id: string): Promise<void> => {
+    const res = await fetch(`${url_db}/scores/${id}`, {
         method: 'DELETE'
     });
 

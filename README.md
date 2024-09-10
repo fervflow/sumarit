@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SumArit
 
-## Getting Started
+SumArit is a small game of aritmetic sums and subtractions that have to be solved before the timer ends.
 
-First, run the development server:
+#### You will have:
+
+- A list of scores to check your answers.
+- The option to delete and reset the scores.
+- A selection of themes to choose you preferred one.
+
+
+## Develpoment
+
+#### React.js with Next.js
+
+This project is made with Next.js v14 with a resposive design.
+
+#### DaisyUI component library
+
+To give it a consistent look, It uses DaisyUI, as well as a selection of their theme schemes, where the selected theme is saved against page reloads.
+
+#### React Context Hook for API Provider
+The data can use a json-server backend via an `api.ts` file or just local storage with a `fake_api.ts` file, this api module will be loaded dynamically in a react context, if the json-server is not available in the port `3030` it will use local storage.
+
+### Build and Run
+
+To build this project you just need to clone it, change directory to it's project folder and run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then you have some scripts available to run:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- To run the development server:
+    ```bash
+    npm run dev
+    ```
+    It will be available at the [http://localhost:3000](http://localhost:3000) address.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- To run the json-server for the backend:
+    ```bash
+    npm run backend
+    ```
+    This json server will be started at port `3030` and be available at [http://localhost:3030/scores](http://localhost:3030/scores)
+    
+    The data will be managed in a json file: `/data/db_scores.json`

@@ -13,10 +13,10 @@ export default class IdGenerator {
     return this.instance ?? new this();
   }
 
-  public getId(): number {
+  public getId(): string {
     ++this.id;
     localStorage.setItem(idKey, this.id.toString())
-    return this.id;
+    return this.id.toString();
   }
   public resetId() {
     localStorage.setItem(idKey, '0')

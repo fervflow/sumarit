@@ -1,3 +1,5 @@
+"use client";
+
 import { themes } from '@/constants/themes-list'
 import React, { useEffect } from 'react'
 import { themeChange } from 'theme-change';

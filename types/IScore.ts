@@ -1,5 +1,5 @@
 export interface IScore {
-    id: number;
+    id: string;
     operation: string;
     result: number;
     answer: number | null;
