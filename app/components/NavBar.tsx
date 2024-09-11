@@ -17,7 +17,7 @@ const NavBar = () => {
         <div className="navbar-center flex text-base-content">
           <ul className="menu menu-horizontal px-1  font-semibold">
             <li>
-              <Link href="/" replace className='flex justify-center items-center gap-1'>
+              <Link href="/scores" replace className='flex justify-center items-center gap-1'>
                 <GrScorecard className='text-accent'/>
                 Resultados
               </Link>
