@@ -17,13 +17,13 @@ const NavBar = () => {
         <div className="navbar-center flex text-base-content">
           <ul className="menu menu-horizontal px-1  font-semibold">
             <li>
-              <Link href="/" className='flex justify-center items-center gap-1'>
+              <Link href="/" replace className='flex justify-center items-center gap-1'>
                 <GrScorecard className='text-accent'/>
                 Resultados
               </Link>
             </li>
             <li>
-              <Link href="/play" className='flex justify-center items-center gap-1'>
+              <Link href="/play" replace className='flex justify-center items-center gap-1'>
                 <GrPlay className='text-accent'/>
                 Jugar
               </Link>
